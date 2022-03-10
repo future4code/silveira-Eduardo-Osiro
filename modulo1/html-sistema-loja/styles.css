@@ -1,14 +1,36 @@
-body{
-    font-family: Arial, Helvetica, sans-serif;
-
+* {
+    box-sizing: border-box;
 }
 
-.conteiner {
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(141, 238, 238);
+}
+
+.conteiner-main {
     border: 20px solid rgb(0, 0, 0) ;
     background-color: burlywood ;
     color: rgb(0, 0, 0);
     width: 40%;
     margin: auto;
+    margin-bottom: 10px;
     padding: 100px ;
 
+}
+
+.conteiner-opcao {
+    border: 10px solid rgb(0, 0, 0) ;
+    background-color: burlywood ;
+    width: 30%;
+    margin: auto;
+    padding: 20px;
+}
+
+.conteiner-secundario {
+    border: 10px solid rgb(0, 0, 0);
+    background-color: burlywood;
+    width: 18%;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 40px;
 }
