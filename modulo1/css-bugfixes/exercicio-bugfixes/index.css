@@ -113,6 +113,11 @@ td button {
 .container-do-search {
     margin-top: 20px;
     height: 100px;
+    
+}
+
+table {
+    margin: auto;
 }
 
 
@@ -124,6 +129,7 @@ td button {
     border-radius: 5px;
     font-size: 10px;
     color: black;
+    text-align: center;
 }
 
 #back-button:hover {
