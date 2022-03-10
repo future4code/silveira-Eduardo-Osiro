@@ -21,6 +21,10 @@ h2 {
 input {
     height: 20px;
     width: 500px;
+    border-top-width: 0; 
+    border-right-width: 0; 
+    border-left-width: 0;
+}
 }
 
 button:focus {
@@ -127,7 +131,7 @@ table {
 }
 
 .ajusteImagens {
-    width: 200px 
+    width: 50px 
 }
 
 #back-button {
@@ -143,7 +147,7 @@ table {
     position: relative;
     top: 50px;
 }
-}
+
 
 #back-button:hover {
     background-color: #635a3d
