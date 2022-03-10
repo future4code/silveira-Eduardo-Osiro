@@ -112,6 +112,10 @@ td button {
     color: black;
 }
 
+td button:hover {
+    background-color: #a87006
+}
+
 .container-do-search {
     margin-top: 20px;
     height: 100px;
@@ -134,7 +138,11 @@ table {
     border-radius: 5px;
     font-size: 10px;
     color: black;
-    
+    margin: auto;
+    display: block;
+    position: relative;
+    top: 50px;
+}
 }
 
 #back-button:hover {
