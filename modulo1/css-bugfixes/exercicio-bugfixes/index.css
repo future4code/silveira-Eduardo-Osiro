@@ -25,7 +25,7 @@ input {
     border-right-width: 0; 
     border-left-width: 0;
 }
-}
+
 
 button:focus {
     color: white;
@@ -39,9 +39,7 @@ div>p:first-child {
     display: inline;
 }
 
-div img {
-    background: black;
-}
+
 
 .botao-amarelo {
     background-color: #ffaf43;
@@ -64,6 +62,15 @@ div img {
 .icone {
     height: 15px;
 }
+
+.icone:hover {
+    opacity: 0.5;
+}
+
+.icone:active {
+    opacity: 1;
+}
+
 
 
 /** 
@@ -114,6 +121,16 @@ td button {
     height: 30px;
     border-radius: 5px;
     color: black;
+}
+
+div table tbody tr td:nth-child(2) {
+    text-align: center;
+}
+div table tbody tr td:nth-child(3) {
+    text-align: center;
+}
+div table tbody tr td:nth-child(4) {
+    text-align: center;
 }
 
 td button:hover {
