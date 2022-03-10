@@ -120,6 +120,9 @@ table {
     margin: auto;
 }
 
+.ajusteImagens {
+    width: 200px 
+}
 
 #back-button {
     background-color: white;
@@ -129,7 +132,7 @@ table {
     border-radius: 5px;
     font-size: 10px;
     color: black;
-    text-align: center;
+    
 }
 
 #back-button:hover {
