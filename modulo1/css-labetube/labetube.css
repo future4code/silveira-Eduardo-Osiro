@@ -72,3 +72,51 @@ footer {
     align-items: center;
     padding: 20px;
 }
+
+@media screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    header h1 {
+        width: 10%;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: auto;
+        padding: 5%;
+    }
+    
+    
+    input {
+        width: 60%;
+        margin: 5% 0;
+    }
+    
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 10%;
+        margin: 5% 0;
+    }
+
+    main div p {
+        margin-bottom: 5%;
+        align-self: center;
+        margin-top: 6%;
+    }
+
+    main div {
+        height: 15%;
+        
+        margin-bottom: 5%;
+
+    }
+    
+    footer div {
+        display: flex;
+        justify-content: space-evenly
+    }
+
+
+}
