@@ -85,8 +85,7 @@ footer {
         width: auto;
         padding: 5%;
     }
-    
-    
+            
     input {
         width: 60%;
         margin: 5% 0;
@@ -100,6 +99,14 @@ footer {
         margin: 5% 0;
     }
 
+    .div-index {
+        width: 90%;
+    }
+
+    video {
+        width: 100%;
+    }
+
     main div p {
         margin-bottom: 5%;
         align-self: center;
@@ -108,9 +115,7 @@ footer {
 
     main div {
         height: 15%;
-        
         margin-bottom: 5%;
-
     }
     
     footer div {
