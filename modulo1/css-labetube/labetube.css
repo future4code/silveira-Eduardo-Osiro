@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+body {
+    height: 100vh;
+}
+
+h2 {
+    border-left:  5px dotted rgb(25, 108, 141);
+    border-bottom: 5px dotted rgb(25, 108, 141);    
+    padding-left: 3px;
+}
+
+header {
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+}
+
+.div-index {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 5px black;
+    border-radius: 25px;
+}
+
+p {
+    margin: 20px 0;
+}
+
+video {
+    width: 20vw;
+    border-radius:  25px;
+}
+
+main {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 10px;
+    column-gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+.pagina-com-video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 50px;
+}
+
+.pagina-com-video video {
+    width: 70vw;
+}
+
+footer {
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+@media screen and (min-device-width: 400px) and (max-device-width: 480px) {
+    header h1 {
+        width: 10%;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: auto;
+        padding: 5%;
+    }
+            
+    input {
+        width: 60%;
+        margin: 5% 0;
+    }
+    
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 10%;
+        margin: 5% 0;
+    }
+
+    .div-index {
+        width: 90%;
+    }
+
+    video {
+        width: 100%;
+    }
+
+    main div p {
+        margin-bottom: 5%;
+        align-self: center;
+        margin-top: 6%;
+    }
+
+    main div {
+        height: 15%;
+        margin-bottom: 5%;
+    }
+    
+    footer div {
+        display: flex;
+        justify-content: space-evenly
+    }
+
+
+}
