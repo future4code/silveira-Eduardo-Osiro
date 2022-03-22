@@ -1,13 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
+import { ItemMenu } from './Components/ItemMenu';
+import { CardVideo } from './Components/Card.Video';
 
 function App() {
-
-  const titulo = "Título do vídeo"
-
-  function reproduzVideo() {
-    alert("O vídeo está sendo reproduzido")
-}
 
   return (
     <div>
@@ -20,17 +16,51 @@ function App() {
         <main>
             <nav className="menu-vertical">
                 <ul>
-                    <li className="botoes-meunu-vertical">Início</li>
-                    <li className="botoes-meunu-vertical">Em alta</li>
-                    <li className="botoes-meunu-vertical">Inscrições</li>
+                    <ItemMenu texto={"Batata"}/>
+                    <ItemMenu texto={"Em Alta"}/>
+                    <ItemMenu texto={"Inscrições"}/>
+                    <ItemMenu texto={"Originais"}/>
                     <hr/>
-                    <li className="botoes-meunu-vertical">Originais</li>
-                    <li className="botoes-meunu-vertical">Histórico</li>
+                    <ItemMenu texto={"Bibliotecas"}/>
+                    <ItemMenu texto={"Configurações"}/>
                 </ul>
             </nav>
 
             <section className="painel-de-videos">
-                <div className="box-pagina-principal media1" onClick={reproduzVideo}>
+                
+                <CardVideo
+                    imagem={"https://picsum.photos/400/400?a=1"}
+                    titulo={"Título Vídeo 1"}
+                />
+                <CardVideo
+                    imagem={"https://picsum.photos/400/400?a=2"}
+                    titulo={"Título Vídeo 2"}
+                />
+                <CardVideo
+                    imagem={"https://picsum.photos/400/400?a=3"}
+                    titulo={"Título Vídeo 3"}
+                />
+                <CardVideo
+                    imagem={"https://picsum.photos/400/400?a=4"}
+                    titulo={"Título Vídeo 4"}
+                />
+                <CardVideo
+                    imagem={"https://picsum.photos/400/400?a=5"}
+                    titulo={"Título Vídeo 5"}
+                />
+                <CardVideo
+                    imagem={"https://picsum.photos/400/400?a=6"}
+                    titulo={"Título Vídeo 6"}
+                />
+                <CardVideo
+                    imagem={"https://picsum.photos/400/400?a=7"}
+                    titulo={"Título Vídeo 7"}
+                />
+                <CardVideo
+                    imagem={"https://picsum.photos/400/400?a=8"}
+                    titulo={"Título Vídeo 8"}
+                />
+                {/* <div className="box-pagina-principal media1" onClick={reproduzVideo}>
                     <img src="https://picsum.photos/400/400?a=1 " alt=""/>
                     <h4>{titulo}</h4>
                 </div>
@@ -61,7 +91,7 @@ function App() {
                 <div className="box-pagina-principal media8" onClick={reproduzVideo}>
                     <img src="https://picsum.photos/400/400?a=8 " alt=""/>
                     <h4>{titulo}</h4>
-                </div>
+                </div>  */}
             </section>
         </main>
 
