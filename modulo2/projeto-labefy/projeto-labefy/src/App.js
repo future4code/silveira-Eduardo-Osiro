@@ -16,7 +16,9 @@ const GlobalStyle = createGlobalStyle`
 export default class App extends React.Component {
 
     state = {
-      page: "AdicionarPlaylist"
+      page: "AdicionarPlaylist",
+      idPlaylist: '',
+      namePlaylist: ''
     }
 
     renderPage = () => {
@@ -24,9 +26,25 @@ export default class App extends React.Component {
         case "AdicionarPlaylist":
           return <CriarPlaylist paginaListaPlaylist={this.paginaListaPlaylist}/>
         case "ListaPlaylist":
-          return <ListaDePlaylist paginaCriarPlaylist={this.paginaCriarPlaylist}/>
+          return <ListaDePlaylist paginaCriarPlaylist={this.paginaCriarPlaylist} paginaDetalhesPlaylist={this.paginaDetalhesPlaylist}/>
+        case "DetalhePlaylist":
+          return <DetalhesPlaylist 
+              paginaCriarPlaylist={this.paginaCriarPlaylist}
+              paginaListaPlaylist={this.paginaListaPlaylist}
+              idPlaylist={this.state.idPlaylist}
+              namePlaylist={this.state.namePlaylist}
+              />
+
       }
     }
+
+  paginaDetalhesPlaylist = (id, name) => {
+    this.setState({
+      page: 'DetalhePlaylist',
+      idPlaylist: id,
+      namePlaylist: name
+    })
+  }
 
   paginaCriarPlaylist = () =>{
     this.setState({

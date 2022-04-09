@@ -22,10 +22,21 @@ const AreaCriarPlaylist = styled.div`
     padding: 10px 10px;
     height: 50vh;
     width: 40vw;
-    
-    
-
 `
+
+const InputButton = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+        button {
+            border-radius: 10px;
+            :hover {
+                background-color: black;
+                color: white
+            }
+        }
+`
+
 
 const headers ={
     headers: {
@@ -69,13 +80,16 @@ export default class CriarPlaylist extends React.Component {
 
       <ContainerCriarPlaylist>
           <AreaCriarPlaylist>
-            <h1>(☞ﾟヮﾟ)☞ Bem Vindo a Labefy!</h1>
+            <h1>(☞ﾟヮﾟ)☞ Bem Vindo a Labefy! 🎶</h1>
             <h1>Crie uma Playlist</h1>
-          
-              <h3>Noma da Playlist</h3> 
-              <input value={this.state.playListName} onChange={this.handlePlaylistName} placeholder='Escreva aqui :D'></input>
-              <button onClick={this.createPlaylist} >Criar!</button>
-              <button onClick={this.props.paginaListaPlaylist}>Listas das Playlists!</button>
+                        
+            <InputButton>
+                <input value={this.state.playListName} onChange={this.handlePlaylistName} placeholder='Escreva aqui :D'></input>
+              
+                <button onClick={this.createPlaylist} >Criar!</button>
+              
+                <button onClick={this.props.paginaListaPlaylist}>Listas das Playlists!</button>
+            </InputButton>
 
           
           </AreaCriarPlaylist>

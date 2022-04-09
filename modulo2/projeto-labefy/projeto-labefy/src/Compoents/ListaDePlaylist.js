@@ -1,10 +1,12 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import DetalhesPlaylist from './DetalhesPlaylist'
 
 const ContainerListaPlaylist = styled.div`
     background-image: linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%);
     display:flex;
+    flex-direction: column;
     align-items:center;
     justify-content:center;
     width: 100vw;
@@ -20,11 +22,11 @@ const AreaListaPlaylist = styled.div`
     border: 3px solid black;
     border-radius: 10px;
     padding: 10px 10px;
-    height: 50vh;
+    
     width: 40vw; 
 `
 
-export default class ListaDePlaylsit extends React.Component {
+export default class ListaDePlaylist extends React.Component {
 
     state ={
         listaPlaylist: []
@@ -72,14 +74,14 @@ export default class ListaDePlaylsit extends React.Component {
 
 
 
-
   render() {
 
 
     const listaDaPlaylist = this.state.listaPlaylist.map((playlist) => {
         return (
-            <AreaListaPlaylist key={playlist.id}>
-                <p>{playlist.name}</p>
+            <AreaListaPlaylist  key={playlist.id}>
+                <button onClick={() =>this.props.paginaDetalhesPlaylist(playlist.id)}>Detalhes</button>
+                {playlist.name}
                 <button onClick={() => this.deletePlaylist(playlist.id)}>X</button>
             </AreaListaPlaylist>
         )
@@ -89,14 +91,17 @@ export default class ListaDePlaylsit extends React.Component {
 
 
 
-
     return (
       <ContainerListaPlaylist>
+          <button onClick={this.props.paginaCriarPlaylist}>Ir para criação de Playlists</button>
           
           <AreaListaPlaylist>
           {listaDaPlaylist}
 
           </AreaListaPlaylist>
+        
+
+
 
       </ContainerListaPlaylist>
     )
