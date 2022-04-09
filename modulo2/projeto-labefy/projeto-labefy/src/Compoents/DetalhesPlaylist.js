@@ -12,7 +12,7 @@ const MusicasMostradas = styled.div`
 
 const headers = {
   headers: {
-      Authorization: 'eduardo-osiro-silveira'
+    Authorization: 'eduardo-osiro-silveira'
   }
 }
 
@@ -83,6 +83,7 @@ export default class DetalhesPlaylist extends React.Component {
     }
 
     const urlAdd = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/${this.props.idPlayList}/tracks`
+                    
 
     axios.post(urlAdd, body, headers)
     .then((res) => {
