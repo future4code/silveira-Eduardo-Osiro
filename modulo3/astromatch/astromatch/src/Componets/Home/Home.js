@@ -13,6 +13,8 @@ background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%,
 
 const ContainerHome = styled.div`
 border: 5px solid black;
+border-radius: 10px;
+box-shadow: 0 12px 16px 0 rgba(0,0,0,0.50), 0 17px 50px 0 rgba(0,0,0,0.60);
 `
 
 const HeaderPerfil = styled.div`
@@ -85,6 +87,7 @@ const Informacoes = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: lightgray;
  p{
   text-align:center;
   width: 10vw;

@@ -8,6 +8,7 @@ background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%,
 display: flex;
 align-items:center;
 justify-content:center;
+
 `
 
 const ContainerMatches = styled.div`
@@ -17,16 +18,21 @@ align-items: center;
 justify-content: center;
 border: 5px solid black;
 width: 20vw;
+background-color: white;
+box-shadow: 0 12px 16px 0 rgba(0,0,0,0.50), 0 17px 50px 0 rgba(0,0,0,0.60);
 `
 
 const ImgMatched = styled.img`
-width:5vw;
+width:6vw;
+
+border-radius: 5px;
 `
 
 const HeaderPerfil = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: space-around;
+background-color: white;
 `
 
 const DivBotao = styled.div`
@@ -42,7 +48,7 @@ align-items: center;
 
         :hover {
           background-color: lightpink;
-          width: 120px;
+          width: 45px;
           box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19)
         }
     }
@@ -52,13 +58,31 @@ const DivMap = styled.div`
 display: flex;
 flex-direction: row;
 justify-content: flex-start;
+align-items: center;
 padding: 10px;
+
 `
 
 const DivLista = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: flex-start;
+`
+
+const BotaoClear = styled.button`
+border: 0px;
+background-color: aquamarine;
+border-radius: 10px;
+height: 30px;
+transition-duration: 0.4s;
+
+    :hover {
+        background-color: lightpink;
+        width: 120px;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19)
+    }
+    
+
 `
 
 const urlGetMatches = 'https://us-central1-missao-newton.cloudfunctions.net/astroMatch/eduardo-silveira/matches'
@@ -71,7 +95,7 @@ function Matched(props) {
 
   useEffect(() => {
     getMatches()
-  }, [matches])
+  }, [])
 
   const getMatches = () => {
     axios
@@ -84,6 +108,18 @@ function Matched(props) {
       })
   }
 
+  const clearMatch = () => {
+    axios
+      .put(urlClear)
+      .then((res) => {
+        getMatches()
+        alert("Tudo limpo!")
+      })
+      .catch((err) => {
+        alert(err)
+      })
+  }
+
   const listaMatches = matches.map((person) => {
     return (
       <DivMap>
@@ -93,16 +129,7 @@ function Matched(props) {
     )
   })
 
-  const clearMatch = () => {
-    axios
-      .put(urlClear)
-      .then((res) => {
-        console.log(res.data.response)
-      })
-      .catch((err) => {
-        alert(err)
-      })
-  }
+
 
   return (
     <ContainerPai>
@@ -117,7 +144,7 @@ function Matched(props) {
           {listaMatches}
         </DivLista>
 
-        {/* <button onClick={() => clearMatch()}>Limpar matches</button> */}
+        <BotaoClear onClick={clearMatch}>Limpar matches</BotaoClear>
       </ContainerMatches>
     </ContainerPai>
   )
