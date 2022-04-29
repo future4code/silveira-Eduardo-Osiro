@@ -1,12 +1,12 @@
 import React from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import HomePage from '../Pages/HomePage'
-import ListTripsPage from '../Pages/ListTripsPage'
-import AplicationFormPage from '../Pages/AplicationFormPage'
-import LoginPage from '../Pages/LoginPage'
-import AdminHomePage from '../Pages/AdminHomePage'
-import CreateTripPage from '../Pages/CreateTripPage'
-import TripDetailsPage from '../Pages/TripDetailsPage'
+import HomePage from '../Pages/HomePage/HomePage'
+import ListTripsPage from '../Pages/ListTripsPage/ListTripsPage'
+import AplicationFormPage from '../Pages/AplicationForm/AplicationFormPage'
+import LoginPage from '../Pages/LoginPage/LoginPage'
+import AdminHomePage from '../Pages/AdminHomePage/AdminHomePage'
+import CreateTripPage from '../Pages/CreateTripPage/CreateTripPage'
+import TripDetailsPage from '../Pages/TripDetailsPage/TripDetailsPage'
 
 
 function Router() {
