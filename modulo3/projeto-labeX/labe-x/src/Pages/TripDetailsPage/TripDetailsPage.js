@@ -3,7 +3,7 @@ import Header from '../../Components/Header'
 import useProtectedPage from '../../Hooks/useProtectedPage'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Botoes, DivTripInfo, ApprovedCandidates, DivMap, DivInfo,  DivAprovados, MainContainer } from './styleTripDetailsPage'
+import { Botoes, CandidatesButton, DivTripInfo, ApprovedCandidates, DivMap, DivInfo,  DivAprovados, MainContainer } from './styleTripDetailsPage'
 
 function TripDetailsPage() {
   useProtectedPage();
@@ -74,10 +74,12 @@ function TripDetailsPage() {
         <p>País: {candidate.country} </p>
         <p>Profissão: {candidate.profession} </p>
         <p>Texto de aplicação: {candidate.applicationText} </p>
-        <div>
+        <CandidatesButton>
+          <Botoes>
           <button onClick={() => decideCandidate(candidate.id, true)} > Aprovar </button>
           <button onClick={() => decideCandidate(candidate.id, false)}> Reprovar </button>
-        </div>
+          </Botoes>
+        </CandidatesButton>
       </DivMap>
     )
   })

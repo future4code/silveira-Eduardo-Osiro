@@ -58,9 +58,15 @@ border-radius: 40px;
 
 `
 
+export const CandidatesButton = styled.div`
+display: flex;
+justify-content: center;
+`
+
 export const Botoes = styled.div`
 display: flex;
 flex-direction: row;
+justify-content: center;
 gap: 20px;
 width: 20vw;
 padding-bottom: 10px;

@@ -19,6 +19,7 @@ export const DivMap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 30px;
 
   div {
     height: 40px;
@@ -28,6 +29,11 @@ export const DivMap = styled.div`
     padding: 10px;
     border-radius: 40px;
     
+  }
+
+  button {
+    border: none;
+    border-radius: 30px;
   }
 
 `
