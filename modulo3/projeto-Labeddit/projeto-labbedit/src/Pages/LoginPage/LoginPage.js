@@ -3,12 +3,15 @@ import { useNavigate } from 'react-router-dom'
 import { goToSignUpPage } from '../../Routes/Coordinator';
 import Logo from '../../Assets/logo.png'
 import { LoginScreen } from './styledLoginPage'
-import useForm from '../../Hooks/useForm'
+
 import LoginForm from './LoginForm';
+import useUnprotectedPage from '../../Hooks/useUnprotectedPage';
 
 
 
 function LoginPage() {
+  useUnprotectedPage();
+
   const navigate = useNavigate();
 
   return (

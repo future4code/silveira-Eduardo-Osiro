@@ -1,13 +1,18 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import useForm from '../../Hooks/useForm'
+import { login } from '../../Services/user'
 import {DivForm} from './styledLoginPage'
 
 
 function LoginForm() {
-  const {form, onChange, cleanFields} = useForm ({email: "", password: ""})
+  const {form, onChange, cleanFields} = useForm ({email: "", password: ""});
+
+  const navigate = useNavigate();
 
   const onSubmitForm = (event) => {
       event.preventDefault()
+      login(form, cleanFields, navigate)
   }
 
   return (
@@ -18,6 +23,7 @@ function LoginForm() {
           onChange={onChange}
           placeholder='email'
           required
+          type={"email"}
         />
 
         <input
@@ -26,6 +32,7 @@ function LoginForm() {
           onChange={onChange}
           placeholder='password'
           required
+          type={"password"}
         />
 
         <button>Log In</button>

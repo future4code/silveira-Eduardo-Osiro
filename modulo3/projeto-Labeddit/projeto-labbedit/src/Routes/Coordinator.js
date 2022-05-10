@@ -13,3 +13,7 @@ export const goToFeedPage = (navigate) => {
 export const goToPostPage = (navigate) => {
     navigate('/post')
 }
+
+export const goBack = (navigate) => {
+    navigate(-1)
+}
