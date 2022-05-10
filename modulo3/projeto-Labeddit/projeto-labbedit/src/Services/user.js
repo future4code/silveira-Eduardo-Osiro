@@ -10,7 +10,20 @@ export const login = (form, cleanFields, navigate) => {
         goToFeedPage(navigate);
     })
     .catch((error) => {
-        alert("Erro!, por favor, tente novamente")
-        console.log(error.response.data.message)
+        alert(error.response.data.message)
     })
 }
+
+export const signUp = (form, cleanFields, navigate) => {
+    axios.post (`${baseURL}/users/signup`, form)
+    .then((response) => {
+        localStorage.setItem("token", response.data.token);
+        alert("Cadastro realizado!")
+        cleanFields();
+        goToFeedPage(navigate);
+    })
+    .catch((error) => {
+        alert(error.response.data.message)
+    })
+}
+

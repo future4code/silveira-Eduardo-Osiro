@@ -20,7 +20,7 @@ function LoginPage() {
       <h2>Login</h2>
         <LoginForm/>
       <hr/>
-      <button onClick={() => goToSignUpPage(navigate)}>Sign Up </button>
+      <button onClick={() => goToSignUpPage(navigate)}>Cadastrar!</button>
     </LoginScreen>
   )
 }

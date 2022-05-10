@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import useForm from '../../Hooks/useForm'
 import { signUp } from '../../Services/user'
+import {DivForm} from './styledSignUpPage'
 
 
 
@@ -16,7 +17,7 @@ function SignUpForm() {
     }
 
     return (
-        <form onSubmit={onSubmitForm} >
+        <DivForm onSubmit={onSubmitForm} >
 
             <input
                 name="username"
@@ -32,6 +33,7 @@ function SignUpForm() {
                 onChange={onChange}
                 placeholder='email'
                 required
+                type={"email"}
             />
 
             <input
@@ -40,11 +42,12 @@ function SignUpForm() {
                 onChange={onChange}
                 placeholder='password'
                 required
+                type={"password"}
             />
 
 
             <button>Cadastrar!</button>
-        </form>
+        </DivForm>
     )
 }
 
