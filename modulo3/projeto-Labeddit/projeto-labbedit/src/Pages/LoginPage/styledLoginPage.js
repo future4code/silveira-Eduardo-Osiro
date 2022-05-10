@@ -16,11 +16,12 @@ export const LoginScreen = styled.div`
     }
 `
 
-export const LoginForm = styled.form`
+export const DivForm = styled.form`
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 10px;
 
     button {
         width: 64%;
