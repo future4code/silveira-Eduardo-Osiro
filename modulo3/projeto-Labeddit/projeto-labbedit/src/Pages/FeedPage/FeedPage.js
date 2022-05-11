@@ -1,28 +1,37 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import Header from '../../Components/Header';
+import { baseURL } from '../../Constants/urls';
 import useForm from '../../Hooks/useForm';
 import useProtectedPage from '../../Hooks/useProtectedPage'
-import { post } from '../../Services/post';
+import useRequestData from '../../Hooks/useRequestData';
+import { goToPostPage } from '../../Routes/Coordinator';
+import {PostsMap} from './styledFeedPage'
 
 
 function FeedPage() {
-
   useProtectedPage();
 
-  useEffect(() => {
-    post(setPosts)
-  }, [])
+  const navigate = useNavigate();
 
-  const [posts, setPosts] = useState
+  const posts = useRequestData([], `${baseURL}/posts`);
 
-  const { form, onChange, cleatFields } = useForm({ title: "", body: "" })
+  const onClickCard = (id) => {
+    goToPostPage(navigate, id)
+  }
 
-  const postsList = posts && posts.map((post) => {
+  const { form, onChange, cleatFields } = useForm({ title: "", body: "" });
+
+  const postsCard = posts && posts.map((post) => {
     return (
-      <div>
-        <p>{post.title}</p>
-        <p>{post.username}</p>
-      </div>
+      <PostsMap  key={post.id}>
+        <p onClick={() => onClickCard(post.id)}>{post.title}</p>
+        <p>Usuário: {post.username}</p>
+        <p> {post.voteSum} </p>
+        <p> {post.commmentCount} </p>
+        <button> {post.userVote} x </button>
+
+      </PostsMap>
     )
   });
 
@@ -50,7 +59,7 @@ function FeedPage() {
         <button>Postar!</button>
 
       </div>
-      {postsList}
+      {postsCard}
     </div>
   )
 }

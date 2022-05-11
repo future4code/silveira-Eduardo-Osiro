@@ -2,7 +2,8 @@ import axios from "axios";
 import { baseURL } from '../Constants/urls'
 
 const headers = {
-    headers: { authorization: localStorage.getItem("token") }
+    headers:
+        { authorization: localStorage.getItem("token") }
 }
 
 export const post = (setPosts) => {
