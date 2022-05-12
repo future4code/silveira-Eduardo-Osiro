@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import CardPost from '../../Components/CardPost/CardPost';
 import Header from '../../Components/Header';
 import { baseURL } from '../../Constants/urls';
 import useForm from '../../Hooks/useForm';
 import useProtectedPage from '../../Hooks/useProtectedPage'
 import useRequestData from '../../Hooks/useRequestData';
 import { goToPostPage } from '../../Routes/Coordinator';
-import {PostsMap} from './styledFeedPage'
+import { createPost } from '../../Services/post';
+import  {FeedForm} from './styledFeedPage'
 
 
 function FeedPage() {
@@ -20,44 +23,94 @@ function FeedPage() {
     goToPostPage(navigate, id)
   }
 
-  const { form, onChange, cleatFields } = useForm({ title: "", body: "" });
+  const { form, onChange, cleanFields } = useForm({ title: "", body: "" });
+
+  const handlePostVote = (postId, direction) => {
+    const headers = {
+        headers: {
+            Authorization: localStorage.getItem("token")
+        }
+    }
+
+    const body = {
+        direction: direction
+    }
+    if (direction === 1){
+        axios
+        .post(`${baseURL}/posts/${postId}/votes`, body, headers)
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err.response)
+        })
+    } else if (direction === -1) {
+        axios
+        .put(`${baseURL}/posts/${postId}/votes`, body, headers)
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err.response)
+        })
+    } else {
+        axios
+        .delete(`${baseURL}/posts/${postId}/votes`, headers)
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err.response)
+        })
+    }
+}
 
   const postsCard = posts && posts.map((post) => {
     return (
-      <PostsMap  key={post.id}>
-        <p onClick={() => onClickCard(post.id)}>{post.title}</p>
-        <p>Usuário: {post.username}</p>
-        <p> {post.voteSum} </p>
-        <p> {post.commmentCount} </p>
-        <button> {post.userVote} x </button>
-
-      </PostsMap>
+      <CardPost
+        onClick={() => onClickCard(post.id)}
+        key={post.id}
+        username={post.username}
+        id={post.id}
+        body={post.body}
+        title={posts.title}
+        comentCount={post.commentCount}
+        userVote={post.userVote}
+        voteSum={post.voteSum}
+        handlePostVote={handlePostVote}
+      />
     )
   });
 
+  const onSubmitForm = (event) => {
+    event.preventDefault();
+    createPost(form, cleanFields)
+  }
 
   return (
     <div>
       <Header />
       <div>
         <h3>Feed</h3>
+        <FeedForm onSubmit={onSubmitForm}>
+          <input
+            name={"title"}
+            onChange={onChange}
+            placeholder="título"
+            value={form.title}
+            required
+          />
 
-        <input
-          name={"title"}
-          onChange={onChange}
-          placeholder="título"
-          required
-        />
+          <textarea
+            name={"body"}
+            onChange={onChange}
+            placeholder="Escreva seu post aqui"
+            value={form.body}
+            required
+          />
 
-        <input
-          name={"body"}
-          onChange={onChange}
-          placeholder="Escreva seu post aqui"
-          required
-        />
-
-        <button>Postar!</button>
-
+          <button>Postar!</button>
+        </FeedForm>
       </div>
       {postsCard}
     </div>
