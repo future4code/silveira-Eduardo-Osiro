@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import CardComment from '../../Components/CardComment/CardComment';
 import CardPost from '../../Components/CardPost/CardPost';
 import { baseURL } from '../../Constants/urls';
@@ -9,10 +9,15 @@ import useRequestData from '../../Hooks/useRequestData';
 import useForm from '../../Hooks/useForm';
 import { createComment } from '../../Services/post';
 import Header from '../../Components/Header';
-import { CommentForm } from './styledPostPage'
+import { CommentForm, GoBackButton, BackButton } from './styledPostPage'
+import {goBack} from '../../Routes/Coordinator'
+import { Loader } from '../../Components/Loader/Loader';
+
 
 function PostPage() {
   useProtectedPage();
+
+  const navigate = useNavigate();
 
   const params = useParams();
 
@@ -98,7 +103,10 @@ function PostPage() {
   return (
     <div>
       <Header />
-      {selectedPost}
+      <BackButton>
+      <GoBackButton onClick={goBack(navigate)}> Voltar </GoBackButton>
+      </BackButton>
+      {posts ? selectedPost : <Loader/> }
       <CommentForm onSubmit={onSubmitForm}>
         <textarea
           placeholder="Adicionar comentário"
@@ -109,7 +117,8 @@ function PostPage() {
         />
         <button>Responder</button>
       </CommentForm>
-      {postDetails}
+      {postDetails ? selectedPost : <Loader/> }
+      
 
 
     </div>

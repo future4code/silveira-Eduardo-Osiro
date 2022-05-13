@@ -1,8 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { goToSignUpPage } from '../../Routes/Coordinator';
-import Logo from '../../Assets/logo.png'
-import { LoginScreen } from './styledLoginPage'
+import Logo from '../../Assets/logo-labenu.png'
+import { LoginScreen, SignUpButton, LineDiv } from './styledLoginPage'
 
 import LoginForm from './LoginForm';
 import useUnprotectedPage from '../../Hooks/useUnprotectedPage';
@@ -17,10 +17,11 @@ function LoginPage() {
   return (
     <LoginScreen>
       <img src={Logo} />
-      <h2>Login</h2>
+      <h2>LabEddit</h2>
+      <h5> A rede social da Labenu </h5>
         <LoginForm/>
       <hr/>
-      <button onClick={() => goToSignUpPage(navigate)}>Cadastrar!</button>
+      <SignUpButton onClick={() => goToSignUpPage(navigate)}>Cadastrar!</SignUpButton>
     </LoginScreen>
   )
 }

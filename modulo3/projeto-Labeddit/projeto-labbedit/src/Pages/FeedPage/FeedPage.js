@@ -9,11 +9,14 @@ import useProtectedPage from '../../Hooks/useProtectedPage'
 import useRequestData from '../../Hooks/useRequestData';
 import { goToPostPage } from '../../Routes/Coordinator';
 import { createPost } from '../../Services/post';
-import  {FeedForm} from './styledFeedPage'
+import { FeedForm, FeedContainer } from './styledFeedPage'
+import { Loader } from '../../Components/Loader/Loader';
 
 
 function FeedPage() {
   useProtectedPage();
+
+  const [isLoading, setIsLoading] = useState(false)
 
   const navigate = useNavigate();
 
@@ -23,47 +26,47 @@ function FeedPage() {
     goToPostPage(navigate, id)
   }
 
-  const { form, onChange, cleanFields } = useForm({ title: "", body: "" });
+  const { form, onChange, cleanFields } = useForm({ body: "" });
 
   const handlePostVote = (postId, direction) => {
     const headers = {
-        headers: {
-            Authorization: localStorage.getItem("token")
-        }
+      headers: {
+        Authorization: localStorage.getItem("token")
+      }
     }
 
     const body = {
-        direction: direction
+      direction: direction
     }
-    if (direction === 1){
-        axios
+    if (direction === 1) {
+      axios
         .post(`${baseURL}/posts/${postId}/votes`, body, headers)
         .then((res) => {
-            console.log(res)
+          console.log(res)
         })
         .catch((err) => {
-            console.log(err.response)
+          console.log(err.response)
         })
     } else if (direction === -1) {
-        axios
+      axios
         .put(`${baseURL}/posts/${postId}/votes`, body, headers)
         .then((res) => {
-            console.log(res)
+          console.log(res)
         })
         .catch((err) => {
-            console.log(err.response)
+          console.log(err.response)
         })
     } else {
-        axios
+      axios
         .delete(`${baseURL}/posts/${postId}/votes`, headers)
         .then((res) => {
-            console.log(res)
+          console.log(res)
         })
         .catch((err) => {
-            console.log(err.response)
+          console.log(err.response)
         })
     }
-}
+  }
 
   const postsCard = posts && posts.map((post) => {
     return (
@@ -73,8 +76,8 @@ function FeedPage() {
         username={post.username}
         id={post.id}
         body={post.body}
-        title={posts.title}
-        comentCount={post.commentCount}
+        title={post.title}
+        commentCount={post.commentCount}
         userVote={post.userVote}
         voteSum={post.voteSum}
         handlePostVote={handlePostVote}
@@ -88,16 +91,15 @@ function FeedPage() {
   }
 
   return (
-    <div>
+    <FeedContainer>
       <Header />
       <div>
-        <h3>Feed</h3>
         <FeedForm onSubmit={onSubmitForm}>
           <input
+            placeholder="Título"
             name={"title"}
-            onChange={onChange}
-            placeholder="título"
             value={form.title}
+            onChange={onChange}
             required
           />
 
@@ -112,8 +114,14 @@ function FeedPage() {
           <button>Postar!</button>
         </FeedForm>
       </div>
-      {postsCard}
-    </div>
+      <hr />
+      {posts > 0 ?
+        postsCard 
+        :
+        <Loader />
+      }
+
+    </FeedContainer>
   )
 }
 

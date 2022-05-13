@@ -1,10 +1,16 @@
 import React from 'react'
-import { CommentContainer } from './styledCardComment'
+import { CommentContainer, VoteContainer } from './styledCardComment'
+
+import upVoteIcon from '../../Assets/upVotePadraoCorreto.png'
+import greenUpVoteIcon from '../../Assets/upVoteVerdeCorreto.png'
+
+import downVoteIcon from '../../Assets/downVotePadraoCorreto.png'
+import redDownVoteIcon from '../../Assets/downVoteVermelhoCorreto.png'
 
 function CardComment(props) {
 
     const handleUpVote = () => {
-        if (props.userVote === 1 ) {
+        if (props.userVote === 1) {
             props.handleCommentVote(props.id)
         } else {
             props.handleCommentVote(props.id, 1)
@@ -12,7 +18,7 @@ function CardComment(props) {
     }
 
     const handleDownVote = () => {
-        if (props.userVote === -1 ) {
+        if (props.userVote === -1) {
             props.handleCommentVote(props.id)
         } else {
             props.handleCommentVote(props.id, -1)
@@ -21,16 +27,18 @@ function CardComment(props) {
 
     return (
         <div>
-           <CommentContainer>
-               <p>Usuário: {props.username}</p>
-               <p>Comentário: {props.body}</p>
+            <CommentContainer>
+                <p>Usuário: {props.username}</p>
+                <p>Comentário: {props.body}</p>
 
-               <div>
-                    <button onClick={handleUpVote}>Up Vote</button>
+                <VoteContainer>
+                    <img src={props.userVote === 1 ? greenUpVoteIcon : upVoteIcon} onClick={handleUpVote} alt='up vote' />
+
                     <p>{props.voteSum}</p>
-                    <button onClick={handleDownVote}>Down Vote</button>
-               </div>
-           </CommentContainer>
+
+                    <img src={props.userVote === -1 ? redDownVoteIcon : downVoteIcon} onClick={handleDownVote} alt='down vote' />
+                </VoteContainer>
+            </CommentContainer>
 
 
         </div>

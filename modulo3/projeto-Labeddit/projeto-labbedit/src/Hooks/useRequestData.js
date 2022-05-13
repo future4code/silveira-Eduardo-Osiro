@@ -6,9 +6,8 @@ const useRequestData = (initialData, url) => {
 
     useEffect(() => {
         axios.get(url, {
-            headers: {
-                Authorization: localStorage.getItem("token")
-            }
+            headers:
+            { authorization: localStorage.getItem("token") }
         })
         .then((response) => {
             setData(response.data)

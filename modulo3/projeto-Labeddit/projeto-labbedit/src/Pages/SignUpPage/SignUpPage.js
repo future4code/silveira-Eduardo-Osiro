@@ -1,10 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import Logo from '../../Assets/logo.png'
+import Logo from '../../Assets/logo-labenu.png'
 import SignUpForm from './SignUpForm';
 import { goBack } from '../../Routes/Coordinator';
 import useUnprotectedPage from '../../Hooks/useUnprotectedPage';
-import {SignUpScreen} from './styledSignUpPage'
+import {SignUpScreen, BackButton} from './styledSignUpPage'
 
 function SignUpPage() {
   useUnprotectedPage();
@@ -17,7 +17,7 @@ function SignUpPage() {
       <h2>Cadastro</h2>
         <SignUpForm/>
       <hr/>
-      <button onClick={() => goBack(navigate)} >Voltar </button>
+      <BackButton onClick={() => goBack(navigate)} >Voltar </BackButton>
     </SignUpScreen>
   )
 }

@@ -35,7 +35,7 @@ function LoginForm() {
           type={"password"}
         />
 
-        <button>Log In</button>
+        <button>Continuar</button>
       </DivForm>
   )
 }

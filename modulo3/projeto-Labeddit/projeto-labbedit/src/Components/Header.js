@@ -1,5 +1,6 @@
 import React from 'react'
 import {ContainerHeader} from './styledHeader'
+import Logo from '../Assets/logo-labenu.png'
 
 function Header() {
 
@@ -9,7 +10,7 @@ function Header() {
 
   return (
     <ContainerHeader>
-        <h1> LabEddit </h1>
+        <img src={Logo} alt='Logo Labenu' />
         <button onClick={logout}> Logout </button>
 
     </ContainerHeader>

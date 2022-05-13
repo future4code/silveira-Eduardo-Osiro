@@ -1,5 +1,13 @@
 import React from 'react'
-import { PostContainer } from './styledCardPost'
+import { PostContainer, VoteContainer, ImgBaloon, DetailRow } from './styledCardPost'
+
+import upVoteIcon from '../../Assets/upVotePadraoCorreto.png'
+import greenUpVoteIcon from '../../Assets/upVoteVerdeCorreto.png'
+
+import downVoteIcon from '../../Assets/downVotePadraoCorreto.png'
+import redDownVoteIcon from '../../Assets/downVoteVermelhoCorreto.png'
+
+import commentBaloon from '../../Assets/commentBaloon.png'
 
 function CardPost(props) {
 
@@ -22,19 +30,21 @@ function CardPost(props) {
     return (
 
         <PostContainer>
-
-            <p> {props.title} </p>
-            <p> {props.username} </p>
-            <p>Título: {props.body}</p>
-            <p>Quantidade de comentários: {props.comentCount}</p>
-            <button onClick={props.onClick} > Detalhes </button>
-            <div>
-                <button onClick={handleUpVote}>pra cima</button>
-                <p>{props.voteSum}</p>
-                <button onClick={handleDownVote}>pra baixo</button>
+            <div onClick={props.onClick}>
+                <p> {props.username} </p>
+                <p> {props.title} </p>
+                <p> Título: {props.body}</p>
             </div>
-            <p>Votar: {props.userVote}</p>
+            <DetailRow>
+                <VoteContainer>
+                    <img src={props.userVote === 1 ? greenUpVoteIcon : upVoteIcon} onClick={handleUpVote} alt='up vote' />
 
+                    <p>{props.voteSum}</p>
+
+                    <img src={props.userVote === -1 ? redDownVoteIcon : downVoteIcon} onClick={handleDownVote} alt='down vote' />
+                </VoteContainer>
+                <ImgBaloon src={commentBaloon} alt='balão comentário' />{props.commentCount}
+            </DetailRow>
         </PostContainer>
     )
 }
