@@ -10,7 +10,7 @@ import useForm from '../../Hooks/useForm';
 import { createComment } from '../../Services/post';
 import Header from '../../Components/Header';
 import { CommentForm, GoBackButton, BackButton } from './styledPostPage'
-import {goBack} from '../../Routes/Coordinator'
+import { goToFeedPage } from '../../Routes/Coordinator'
 import { Loader } from '../../Components/Loader/Loader';
 
 
@@ -27,43 +27,43 @@ function PostPage() {
 
   const handleCommentVote = (commentId, direction) => {
     const headers = {
-        headers: {
-            Authorization: localStorage.getItem("token")
-        }
+      headers: {
+        Authorization: localStorage.getItem("token")
+      }
     }
 
     const body = {
-        direction: direction
+      direction: direction
     }
-    if (direction === 1){
-        axios
+    if (direction === 1) {
+      axios
         .post(`${baseURL}/comments/${commentId}/votes`, body, headers)
         .then((res) => {
-            console.log(res)
+          console.log(res)
         })
         .catch((err) => {
-            console.log(err.response)
+          console.log(err.response)
         })
     } else if (direction === -1) {
-        axios
+      axios
         .put(`${baseURL}/comments/${commentId}/votes`, body, headers)
         .then((res) => {
-            console.log(res)
+          console.log(res)
         })
         .catch((err) => {
-            console.log(err.response)
+          console.log(err.response)
         })
     } else {
-        axios
+      axios
         .delete(`${baseURL}/comments/${commentId}/votes`, headers)
         .then((res) => {
-            console.log(res)
+          console.log(res)
         })
         .catch((err) => {
-            console.log(err.response)
+          console.log(err.response)
         })
     }
-}
+  }
 
   const selectedPost = posts.map((post) => {
     if (post.id === params.id) {
@@ -103,10 +103,8 @@ function PostPage() {
   return (
     <div>
       <Header />
-      <BackButton>
-      <GoBackButton onClick={goBack(navigate)}> Voltar </GoBackButton>
-      </BackButton>
-      {posts ? selectedPost : <Loader/> }
+
+      {posts.length > 0 ? selectedPost : <Loader />}
       <CommentForm onSubmit={onSubmitForm}>
         <textarea
           placeholder="Adicionar comentário"
@@ -117,8 +115,10 @@ function PostPage() {
         />
         <button>Responder</button>
       </CommentForm>
-      {postDetails ? selectedPost : <Loader/> }
-      
+      {postDetails ? selectedPost : <Loader />}
+      <BackButton>
+        <GoBackButton onClick={() => goToFeedPage(navigate)}> Voltar </GoBackButton>
+      </BackButton>
 
 
     </div>

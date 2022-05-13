@@ -30,6 +30,7 @@ function CardPost(props) {
     return (
 
         <PostContainer>
+            
             <div onClick={props.onClick}>
                 <p> {props.username} </p>
                 <p> {props.title} </p>

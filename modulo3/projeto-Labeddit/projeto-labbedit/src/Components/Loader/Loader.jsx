@@ -2,7 +2,7 @@ import './style.css'
 
 export const Loader = () => {
     return (
-        <div class="spinner">
+        <div className="spinner">
             <span>L</span>
             <span>O</span>
             <span>A</span>

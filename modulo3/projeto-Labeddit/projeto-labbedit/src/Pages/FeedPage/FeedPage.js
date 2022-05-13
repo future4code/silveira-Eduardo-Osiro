@@ -115,7 +115,7 @@ function FeedPage() {
         </FeedForm>
       </div>
       <hr />
-      {posts > 0 ?
+      {posts.length > 0 ?
         postsCard 
         :
         <Loader />

@@ -24,7 +24,7 @@ function CardComment(props) {
             props.handleCommentVote(props.id, -1)
         }
     }
-
+    
     return (
         <div>
             <CommentContainer>
