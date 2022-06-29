@@ -20,17 +20,20 @@ export async function signup (req: Request,res: Response ) {
         }
 
         const userDatabase = new UserDatabase()
-        const user = userDatabase.findUserByEmail(email)
+        const user = await userDatabase.findUserByEmail(email)
+        console.log(user)
 
         if(user) {
-            res.status(409).send("This email is already registered.")
+            throw new Error("This email is already registered.");
         }
+
 
         const id: string = new IdGenerator().generateId()
 
-        const cypherPassword: string = new HashManager().createHash(password)
+        const hashManager = new HashManager()
+        const hashPassword =  hashManager.createHash(password)
 
-        const newUser = new User (id, name, email, cypherPassword, role)
+        const newUser = new User (id, name, email, hashPassword, role)
 
         await userDatabase.createUser(newUser)
         
