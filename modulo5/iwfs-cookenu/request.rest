@@ -7,3 +7,39 @@ Content-Type: application/json
     "password": "159456",
     "role": "ADMIN"
 }
+
+###
+
+# @name login
+POST http://localhost:3003/login 
+Content-Type: application/json
+
+{ 
+    "email": "Aldeir@email.com",
+    "password": "159456"
+}
+
+###
+
+@token = {{login.response.body.token}}
+GET http://localhost:3003/user/profile
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+@token = {{login.response.body.token}}
+GET http://localhost:3003/user/3bfb3208-b9cb-4c64-999d-c3799b787c83
+Content-Type: application/json
+Authorization: {{token}}
+
+
+###
+@token = {{login.response.body.token}}
+POST http://localhost:3003/recipe
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "title": "Café",
+    "description": "Jogar água quente no pó de café."
+}

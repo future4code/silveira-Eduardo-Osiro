@@ -11,7 +11,6 @@ export async function signup (req: Request,res: Response ) {
 
         if (!name || !email || !password || !role ) {
             throw new Error("Please fill name, email, password and role correctly.");
-            
         }
 
         if(password.lenght < 6) {
@@ -26,7 +25,6 @@ export async function signup (req: Request,res: Response ) {
         if(user) {
             throw new Error("This email is already registered.");
         }
-
 
         const id: string = new IdGenerator().generateId()
 
