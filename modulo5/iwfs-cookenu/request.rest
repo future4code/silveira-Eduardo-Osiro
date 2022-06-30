@@ -19,19 +19,6 @@ Content-Type: application/json
     "password": "159456"
 }
 
-###
-
-@token = {{login.response.body.token}}
-GET http://localhost:3003/user/profile
-Content-Type: application/json
-Authorization: {{token}}
-
-###
-@token = {{login.response.body.token}}
-GET http://localhost:3003/user/3bfb3208-b9cb-4c64-999d-c3799b787c83
-Content-Type: application/json
-Authorization: {{token}}
-
 
 ###
 @token = {{login.response.body.token}}
@@ -43,3 +30,24 @@ Authorization: {{token}}
     "title": "Café",
     "description": "Jogar água quente no pó de café."
 }
+
+###
+
+@token = {{login.response.body.token}}
+GET http://localhost:3003/user/profile
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+
+@token = {{login.response.body.token}}
+GET http://localhost:3003/user/3bfb3208-b9cb-4c64-999d-c3799b787c83
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+@token = {{login.response.body.token}}
+GET http://localhost:3003/recipe/292f7ecb-c500-4f69-9c33-200bcc7eaefb
+Content-Type: application/json
+Authorization: {{token}}
+
