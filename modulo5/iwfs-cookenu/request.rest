@@ -1,4 +1,4 @@
-POST http://localhost:3003/signup
+POST https://labenu-cookenu-eduardo.herokuapp.com/signup
 Content-Type: application/json
 
 {
@@ -11,7 +11,7 @@ Content-Type: application/json
 ###
 
 # @name login
-POST http://localhost:3003/login 
+POST https://labenu-cookenu-eduardo.herokuapp.com/login 
 Content-Type: application/json
 
 { 
@@ -22,7 +22,7 @@ Content-Type: application/json
 
 ###
 @token = {{login.response.body.token}}
-POST http://localhost:3003/recipe
+POST https://labenu-cookenu-eduardo.herokuapp.com/recipe
 Content-Type: application/json
 Authorization: {{token}}
 
@@ -34,20 +34,20 @@ Authorization: {{token}}
 ###
 
 @token = {{login.response.body.token}}
-GET http://localhost:3003/user/profile
+GET https://labenu-cookenu-eduardo.herokuapp.com/user/profile
 Content-Type: application/json
 Authorization: {{token}}
 
 ###
 
 @token = {{login.response.body.token}}
-GET http://localhost:3003/user/3bfb3208-b9cb-4c64-999d-c3799b787c83
+GET https://labenu-cookenu-eduardo.herokuapp.com/user/3bfb3208-b9cb-4c64-999d-c3799b787c83
 Content-Type: application/json
 Authorization: {{token}}
 
 ###
 @token = {{login.response.body.token}}
-GET http://localhost:3003/recipe/292f7ecb-c500-4f69-9c33-200bcc7eaefb
+GET https://labenu-cookenu-eduardo.herokuapp.com/recipe/292f7ecb-c500-4f69-9c33-200bcc7eaefb
 Content-Type: application/json
 Authorization: {{token}}
 
