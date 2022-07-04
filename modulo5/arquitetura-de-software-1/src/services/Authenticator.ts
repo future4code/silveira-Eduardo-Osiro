@@ -19,18 +19,14 @@ export class Authenticator {
         return token
     }
 
-    getTokenData = (token: string): AuthenticationData | null => {
-        try {
-            const tokenData = verify(
+    getTokenData = (token: string): AuthenticationData => {
+          const tokenData = verify(
                 token,
                 process.env.JWT_KEY as string
             ) as any
 
             return tokenData.payload
             
-        } catch (error) {
-            console.log(error)
-            return null
-        }
+
     }
 }

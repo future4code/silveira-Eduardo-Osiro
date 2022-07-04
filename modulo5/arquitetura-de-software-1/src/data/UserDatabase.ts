@@ -30,15 +30,34 @@ export class UserDatabase extends BaseDatabase {
       const result = await BaseDatabase.connection("User_Arq")
         .select('*')
         .where({ email })
-      console.log(result)
-      if (!result[0]){
+
+      if (!result[0]) {
         throw new Error("batata");
       }
-      
+
       return result[0]
 
     } catch (error: any) {
       throw new Error(error.sqlMessage || error.message);
     }
+  }
+
+  public async getAllUsers() {
+    try {
+
+      const users = await BaseDatabase.connection("User_Arq")
+        .select("*")
+
+      return users
+
+    } catch (error: any) {
+      throw new Error(error.sqlMessage || error.message);
+    }
+  }
+
+  public async deleteUSerById (id: string){
+    await UserDatabase.connection("User_Arq")
+    .delete()
+    .where({id})
   }
 }

@@ -65,4 +65,45 @@ export class UserBusiness {
             return {message: error.sqlMessage || error.message}
         }
     }
+
+    async getEveryone (token: string) {
+        try {
+            if(!token) {
+                throw new Error("Cadê o token?");
+            }
+
+            const tokenData = new Authenticator().getTokenData(token)
+
+            if (!tokenData) {
+                throw new Error("Token Inválido");
+            }
+
+            const userData = await new UserDatabase().getAllUsers()
+
+            if(!userData) {
+                throw new Error("Usuário não encontrado.");
+            }
+
+            return userData
+
+        } catch (error: any) {
+            return {message: error.sqlMessage || error.message}
+        }
+    }
+
+    async deleteUser (token: string, id: string) {
+        try {
+            
+            const verifyToken = new Authenticator().getTokenData(token)
+
+            if(verifyToken.role !== "ADMIN") {
+                throw new Error("Soemnte ADMIN pode deletar usuário.");
+            }
+            
+            return await new UserDatabase().deleteUSerById(id)
+
+        } catch (error:any) {
+            return {message: error.sqlMessage || error.message}
+        }
+    }
 }
