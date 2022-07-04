@@ -1,0 +1,68 @@
+import { UserDatabase } from "../data/UserDatabase";
+import { User, USER_ROLES } from "../model/user";
+import { Authenticator } from "../services/Authenticator";
+import { generateId } from "../services/GenerateID";
+import { HashManager }from '../services/HashManager'
+
+
+export class UserBusiness {
+    async createUser (name: string, email: string, password: string, role: USER_ROLES) {
+        try {
+            
+            if(!name || !email || !password || !role) {
+                throw new Error("Preencha todos os campos.");
+                
+            }
+
+            if(email.indexOf("@") === -1){
+                throw new Error("Invalid Email");
+            }
+
+            const id: string = generateId()
+
+            const hashPassword = new HashManager().createHash(password)
+
+            const authenticator = new Authenticator()
+            const token = authenticator.generateToken({ id, role })
+
+            
+            await new UserDatabase().insertUser(id, name, email, hashPassword, role)
+
+            return token
+
+        } catch (error: any) {
+            
+            return {message: error.sqlMessage || error.message}
+
+        }
+    }
+
+    async login (email: string, password: string) {
+        try {
+            
+            if(!email || !password) {
+                throw new Error("Preencha os campos.");
+            }
+
+            const userData = await new UserDatabase().getUserByEmail(email)
+            console.log(userData)
+            if(!userData) {
+                throw new Error("Usuário não registrado.");
+            }
+
+            const correctPassword: boolean = new HashManager().compareHash(password, userData.password)
+
+            const authenticator = new Authenticator()
+            const token = authenticator.generateToken({ id: userData.id, role: userData.role })
+            
+            if(!correctPassword) {
+                throw new Error("Senha incorreta.");
+            }
+
+            return token
+
+        } catch (error:any) {
+            return {message: error.sqlMessage || error.message}
+        }
+    }
+}
