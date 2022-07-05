@@ -16,3 +16,4 @@ const userBusiness = new UserBusiness(
 const userController = new UserController(userBusiness)
 
 app.post('/user/signup', userController.signup)
+app.post('/user/login', userController.login)
