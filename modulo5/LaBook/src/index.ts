@@ -9,12 +9,18 @@ import { Authenticator } from "./services/Authenticator";
 import { IdGenerator } from "./services/GenerateID";
 import { HashManager } from "./services/HashManager";
 
+
 const userBusiness = new UserBusiness(
     new UserDatabase(),
     new IdGenerator(),
     new HashManager(),
     new Authenticator()
 )
+const userController = new UserController(userBusiness)
+
+app.post('/user/signup', userController.signup)
+app.post('/user/login', userController.login)
+
 
 const postBusiness = new PostBusiness(
     new PostDatabase(),
@@ -22,10 +28,7 @@ const postBusiness = new PostBusiness(
     new Authenticator()
 )
 
-const userController = new UserController(userBusiness)
 const postController = new PostController(postBusiness)
 
-app.post('/user/signup', userController.signup)
-app.post('/user/login', userController.login)
-
 app.post('/post/create', postController.post)
+app.get('/post/:id', postController.postById)

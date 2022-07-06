@@ -26,3 +26,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiZTlj
     "description": "hamburguer",
     "type": "normal"
 }
+
+###
+GET http://localhost:3003/post/5b382038-f643-4e1a-9e52-d10a5a493cdc
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiZTljNDBiOTUtZGU4Zi00MjM4LTk5MWYtNTYzMmYzNmVjZmI3In0sImlhdCI6MTY1NzEzOTQ4NiwiZXhwIjoxNjU3MjI1ODg2fQ.fgt5yVAF1DNsQbWezU2rEKOmn6fFnL2dhURGuiS4c30

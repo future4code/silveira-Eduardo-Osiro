@@ -2,6 +2,7 @@ import postDatabase from "../data/PostDatabase";
 import Post from "../model/Post";
 import { Authenticator } from "../services/Authenticator";
 import { IdGenerator } from "../services/GenerateID";
+import { IdTokenDTO } from "../types/idTokenDTO";
 import { PostInputDTO } from "../types/postInputDTO";
 import { AuthenticationData } from "../types/types";
 
@@ -48,6 +49,23 @@ export default class PostBusiness {
 
         return id
 
+    }
+
+    getPostById = async (input: IdTokenDTO) => {
+        const {id, token} = input
+        if(!token) {
+            throw new Error("Envie o token.");
+        }
+
+        const tokenData = this.authenticator.getTokenData(token)
+        if (!tokenData) {
+            throw new Error("Token inválido.")
+        }
+
+        const result = await this.postDatabase.getPostById(id)
+        
+
+        return result
     }
 
 }

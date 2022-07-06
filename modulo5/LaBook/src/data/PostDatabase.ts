@@ -25,4 +25,28 @@ export default class postDatabase extends BaseDatabase {
         }
     }
 
+    async getPostById (id: string) {
+        try {
+            const result = await BaseDatabase.connection(this.TABLE_NAME)
+            .select("*")
+            .where({id})
+            
+            if(!result){
+                throw new Error("Dados não encontrados.");
+            }
+
+            const post = {
+                id: result[0].id,
+                photo: result[0].photo,
+                description: result[0].description,
+                creation_date: result[0].creation_date,
+                type: result[0].type,
+                user_id: result[0].user_id
+            }
+            
+            return post
+        } catch (error:any) {
+            throw new Error(error.sqlMessage || error.message);
+        }
+    }
 }
