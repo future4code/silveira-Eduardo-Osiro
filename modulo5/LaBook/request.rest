@@ -15,3 +15,14 @@ Content-Type: application/json
     "email": "olbric@octotravel.com",
     "password": "olbric123"
 }
+
+###
+POST http://localhost:3003/post/create
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiZTljNDBiOTUtZGU4Zi00MjM4LTk5MWYtNTYzMmYzNmVjZmI3In0sImlhdCI6MTY1NzEzNDY2MCwiZXhwIjoxNjU3MjIxMDYwfQ.LoxIuG0py2WzG1QKV-m_2rJxB4sO2XRuk9N9Dyv9OME
+
+{
+    "photo": "https://www.pexels.com/pt-br/foto/sanduiches-lanches-pao-coque-5836781/",
+    "description": "hamburguer",
+    "type": "normal"
+}
