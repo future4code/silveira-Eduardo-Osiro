@@ -1,4 +1,4 @@
-POST http://localhost:3003/user/signup
+POST https://labook-eduardo.herokuapp.com/user/signup
 Content-Type: application/json
 
 {
@@ -8,7 +8,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3003/user/login
+POST https://labook-eduardo.herokuapp.com/user/login
 Content-Type: application/json
 
 {
@@ -17,7 +17,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3003/post/create
+POST https://labook-eduardo.herokuapp.com/post/create
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiZTljNDBiOTUtZGU4Zi00MjM4LTk5MWYtNTYzMmYzNmVjZmI3In0sImlhdCI6MTY1NzEzNDY2MCwiZXhwIjoxNjU3MjIxMDYwfQ.LoxIuG0py2WzG1QKV-m_2rJxB4sO2XRuk9N9Dyv9OME
 
@@ -28,5 +28,5 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiZTlj
 }
 
 ###
-GET http://localhost:3003/post/5b382038-f643-4e1a-9e52-d10a5a493cdc
+GET https://labook-eduardo.herokuapp.com/post/5b382038-f643-4e1a-9e52-d10a5a493cdc
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiZTljNDBiOTUtZGU4Zi00MjM4LTk5MWYtNTYzMmYzNmVjZmI3In0sImlhdCI6MTY1NzEzOTQ4NiwiZXhwIjoxNjU3MjI1ODg2fQ.fgt5yVAF1DNsQbWezU2rEKOmn6fFnL2dhURGuiS4c30
