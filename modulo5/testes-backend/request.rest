@@ -1,0 +1,23 @@
+POST http://localhost:3003/users/signup
+Content-Type: application/json
+
+{
+    "name": "Batata",
+    "email": "batata@hotmail.com",
+    "password": "123456",
+    "role": "NORMAL"
+}
+
+###
+
+POST http://localhost:3003/users/login
+Content-Type: application/json
+
+{
+    "email": "ariane@hotmail.com",
+    "password": "123456"
+}
+
+###
+GET http://localhost:3003/users/profile/54a3e4af-1990-4643-a0b7-632d34438413
+
