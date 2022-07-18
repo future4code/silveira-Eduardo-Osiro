@@ -1,0 +1,30 @@
+POST http://localhost:3003/signup
+Content-Type: application/json
+
+{
+	"name": "Michael Scott",
+	"email": "michael@dundermifflin.com",
+	"password": "theboss",
+	"role": "NORMAL"
+}
+
+
+###
+
+POST http://localhost:3003/login
+Content-Type: application/json
+
+{
+	"email": "batata@dundermifflin.com",
+	"password": "thebatata"
+}
+
+###
+
+GET http://localhost:3003/all
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiYzcyYzgwYzMtZWFlMS00NjBhLWFkZTgtYzYyNzI1YWM3NDhjIiwicm9sZSI6IkFETUlOIn0sImlhdCI6MTY1Njk2OTI1NiwiZXhwIjoxNjU3MDU1NjU2fQ.Y8gs6y4U9XgMLde40huSsnEkO2csIcnvaZRWtZd1kzw
+
+
+###
+DELETE http://localhost:3003/e1856338-dbd2-4aaf-a5fb-95177c3d8ea9
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiYzcyYzgwYzMtZWFlMS00NjBhLWFkZTgtYzYyNzI1YWM3NDhjIiwicm9sZSI6IkFETUlOIn0sImlhdCI6MTY1Njk3MTAzOSwiZXhwIjoxNjU3MDU3NDM5fQ.tBU2fdPdlB7G_zlGIuDgYR5Aywf60TOrXKeCM13qcHU
