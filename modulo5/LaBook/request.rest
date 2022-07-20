@@ -1,0 +1,32 @@
+POST https://labook-eduardo.herokuapp.com/user/signup
+Content-Type: application/json
+
+{
+    "name": "Olbric",
+    "email": "olbric@octotravel.com",
+    "password": "olbric123"
+}
+
+###
+POST https://labook-eduardo.herokuapp.com/user/login
+Content-Type: application/json
+
+{
+    "email": "olbric@octotravel.com",
+    "password": "olbric123"
+}
+
+###
+POST https://labook-eduardo.herokuapp.com/post/create
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiZTljNDBiOTUtZGU4Zi00MjM4LTk5MWYtNTYzMmYzNmVjZmI3In0sImlhdCI6MTY1NzEzNDY2MCwiZXhwIjoxNjU3MjIxMDYwfQ.LoxIuG0py2WzG1QKV-m_2rJxB4sO2XRuk9N9Dyv9OME
+
+{
+    "photo": "https://www.pexels.com/pt-br/foto/sanduiches-lanches-pao-coque-5836781/",
+    "description": "hamburguer",
+    "type": "normal"
+}
+
+###
+GET https://labook-eduardo.herokuapp.com/post/5b382038-f643-4e1a-9e52-d10a5a493cdc
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiZTljNDBiOTUtZGU4Zi00MjM4LTk5MWYtNTYzMmYzNmVjZmI3In0sImlhdCI6MTY1NzEzOTQ4NiwiZXhwIjoxNjU3MjI1ODg2fQ.fgt5yVAF1DNsQbWezU2rEKOmn6fFnL2dhURGuiS4c30
