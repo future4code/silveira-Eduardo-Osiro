@@ -3,17 +3,17 @@ import PaymentCreditCardBusiness from "../business/PaymentCreditCardBusiness";
 import { CreditCardRegistrationDTO } from "../model/CreditCardModel";
 
 
-export class PaymentController {
+export class PaymentCreditCardController {
 
-    async registerCardPayment (req: Request, res: Response) {
+    async cardPayment (req: Request, res: Response) {
 
-        const{client_id, buyer_name, buyer_email, buyer_cpf, payment_amout, payment_type, 
+        const{client_id, buyer_name, buyer_email, buyer_cpf, payment_amount, payment_type, 
             card_name, card_number, card_expiration_date, card_CVV} = req.body
         
         try {
 
             const input: CreditCardRegistrationDTO = {
-                client_id, buyer_name, buyer_email, buyer_cpf, payment_amout, payment_type, card_name, card_number, card_expiration_date, card_CVV
+                client_id, buyer_name, buyer_email, buyer_cpf, payment_amount, payment_type, card_name, card_number, card_expiration_date, card_CVV
             }
             const result = await PaymentCreditCardBusiness.creditCardPayment(input)
 

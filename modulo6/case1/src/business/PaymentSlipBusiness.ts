@@ -14,7 +14,7 @@ export class PaymentSlipBusiness {
     async slipPayment(input: SlipRegistrationDTO) {
         try {
 
-            const {client_id, buyer_name, buyer_email, buyer_cpf, payment_amout, payment_type } = input
+            const {client_id, buyer_name, buyer_email, buyer_cpf, payment_amount, payment_type } = input
 
             if (!client_id) {
                 throw new CustomError(422, "Client id is missing.")
@@ -28,7 +28,7 @@ export class PaymentSlipBusiness {
             if (!buyer_cpf) {
                 throw new CustomError(422, "CPF is missing.")
             }
-            if (!payment_amout) {
+            if (!payment_amount) {
                 throw new CustomError(422, "No amount described.")
             }
             if (!payment_type) {
@@ -43,7 +43,7 @@ export class PaymentSlipBusiness {
                 buyer_name,
                 buyer_email,
                 buyer_cpf,
-                payment_amout,
+                payment_amount,
                 payment_type
             }
 

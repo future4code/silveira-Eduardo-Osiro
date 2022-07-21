@@ -38,7 +38,7 @@ export interface SlipRegistrationDTO {
      buyer_name: string,
      buyer_email: string,
      buyer_cpf: string,
-     payment_amout: number,
+     payment_amount: number,
      payment_type: string
  }
 
