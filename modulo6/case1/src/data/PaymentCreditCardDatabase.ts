@@ -3,17 +3,17 @@ import { SlipRegistrationDB } from "../model/SlipModel";
 import { BaseDatabase } from "./BaseDatabase";
 
 
-export class PaymentSlipData extends BaseDatabase{
+export class PaymentCreditCardData extends BaseDatabase{
 
-     private static TABLE_NAME = "wirecard_payment_slip"
+     private static TABLE_NAME = "wirecard_payment_creditcard"
 
-     async createSlipPayment (input: SlipRegistrationDB) {
+     async createCreditCardPayment (input: SlipRegistrationDB) {
 
           try {
 
                await BaseDatabase.connection
                .insert(input)
-               .into(PaymentSlipData.TABLE_NAME)
+               .into(PaymentCreditCardData.TABLE_NAME)
 
 
           } catch (error:any) {
