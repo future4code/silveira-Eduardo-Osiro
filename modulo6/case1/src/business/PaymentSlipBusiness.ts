@@ -34,24 +34,41 @@ export class PaymentSlipBusiness {
             if (!payment_type) {
                 throw new CustomError(422, "Missing payment type.")
             }
-
-            const id = this.idGenerator.generateId()
-
-            const result: SlipRegistrationDB = {
-                id,
+            
+            const payment: SlipRegistrationDB = {
+                id: this.idGenerator.generateId(),
                 client_id,
                 buyer_name,
                 buyer_email,
                 buyer_cpf,
                 payment_amount,
-                payment_type
+                payment_type,
+                slip_number: this.slipNumberGenerator()
             }
+            
+            await this.paymentSlipData.createSlipPayment(payment)
 
-            await this.paymentSlipData.createSlipPayment(result)
+            const result = {paymentId: payment.id, slipNumber: payment.slip_number}
+
+            return result
 
         } catch (error: any) {
             throw new CustomError(error.statusCode, error.message)
         }
+    }
+
+    private slipNumberGenerator = () => {
+        const CHARACTERS = "0123456789"
+            let number = ""
+            for(let i = 0; i <= 47; i++) {
+                const index = Math.floor(this.numberDraw(CHARACTERS.length - 1))
+                number += CHARACTERS[index]
+            }
+            return number
+    }
+
+    private numberDraw = (length:number) => {
+        return Math.floor(Math.random() * length)
     }
 }
 

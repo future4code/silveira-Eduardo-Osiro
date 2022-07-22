@@ -4,7 +4,7 @@ import { BaseDatabase } from "./BaseDatabase";
 
 export class GetPaymentInfoDatabase extends BaseDatabase {
 
-     private static TABLE_NAME1 = "wirecard_payment_creditcar"
+     private static TABLE_NAME1 = "wirecard_payment_creditcard"
 
      private static TABLE_NAME2 = "wirecard_payment_slip"
 
@@ -30,6 +30,7 @@ export class GetPaymentInfoDatabase extends BaseDatabase {
                .select("*")
                .where({id})
                .from(GetPaymentInfoDatabase.TABLE_NAME2)
+
                return response
                
           } catch (error:any) {

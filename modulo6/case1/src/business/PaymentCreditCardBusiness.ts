@@ -66,6 +66,9 @@ export class PaymentCreditCardBusiness {
 
             await this.paymentCreditCardData.createCreditCardPayment(result)
 
+            const response = {paymentId: result.id, amount: result.payment_amount}
+
+            return response
         } catch (error:any) {
             throw new CustomError(error.statusCode, error.message)
         }
